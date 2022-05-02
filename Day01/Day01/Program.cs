@@ -31,6 +31,14 @@ namespace Day01
 
             MyFavoriteNumber(out int favorite);
             Console.WriteLine($"Your favorite number is {favorite}. Weird.");
+
+            PostFix(msg);
+            PostFix(msg, 10);
+        }
+
+        static void PostFix(string msg, int num = 1)
+        {
+            Console.WriteLine($"{msg}-{num}");
         }
 
         static void MyFavoriteNumber(out int myFave)
@@ -78,12 +86,12 @@ namespace Day01
             return usersInput;
         }
 
-        static void PrintMessage()
-        {
-            Console.WriteLine("Hello Gotham. I am the hero you need!");
-        }
+        //static void PrintMessage()
+        //{
+        //    Console.WriteLine("Hello Gotham. I am the hero you need!");
+        //}
 
-        static void PrintMessage(string message)
+        static void PrintMessage(string message = "Hello Gotham. I am the hero you need!")
         {
             Console.WriteLine(message);
         }

@@ -28,6 +28,17 @@ namespace Day01
             else            Console.WriteLine("NOT a number.");
 
             PrintMessage(msg);
+
+            MyFavoriteNumber(out int favorite);
+            Console.WriteLine($"Your favorite number is {favorite}. Weird.");
+        }
+
+        static void MyFavoriteNumber(out int myFave)
+        {
+            Console.Write("What is your favorite number? ");
+            string input = Console.ReadLine();
+            if(!int.TryParse(input, out myFave))
+                Console.WriteLine("That was not a number, Steve!");
         }
 
         static bool IntTryParse(string myNum, out int number)

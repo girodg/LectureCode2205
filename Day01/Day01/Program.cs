@@ -19,6 +19,35 @@ namespace Day01
             PrintMessage();
             string msg = GetMessage();
             PrintMessage(msg);
+            //call a method to put a timestamp on the front of my message
+            Timestamp(ref msg);
+            string myNum = "Bob";
+            bool isANumber = IntTryParse(myNum, out int myNumber);
+
+            if (isANumber)  Console.WriteLine(myNumber);
+            else            Console.WriteLine("NOT a number.");
+
+            PrintMessage(msg);
+        }
+
+        static bool IntTryParse(string myNum, out int number)
+        {
+            try
+            {
+                number = int.Parse(myNum);//throw an exception IF myNum is not a number
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine($"{myNum} is not a number.");
+                number = 0;
+                return false;
+            }        
+        }
+
+        static void Timestamp(ref string message)
+        {
+            message = $"{DateTime.Now}: {message}";
         }
 
         static void Factor(ref int num1, int theFactor)

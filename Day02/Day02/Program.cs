@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Day02
 {
@@ -61,6 +62,33 @@ namespace Day02
                 grades.Add(rando.NextDouble() * 100);
             }
             PrintGrades(grades);
+            int numberDropped = DropFailing(grades);
+            PrintGrades(grades);
+            Console.WriteLine($"{numberDropped} of grades dropped.");
+        }
+
+        private static int DropFailing(List<double> grades)
+        {
+            int numberDropped = 0;
+            //for (int i = 0; i < grades.Count; i++)
+            //{
+            //    if (grades[i] < 59.5)
+            //    {
+            //        numberDropped++;
+            //        grades.RemoveAt(i);//more efficient than Remove(grades[i])
+            //        i--;
+            //    }
+            //}
+            //OR, use a reverse for loop
+            for (int i = grades.Count - 1; i >= 0; i--)
+            {
+                if (grades[i] < 59.5)
+                {
+                    numberDropped++;
+                    grades.RemoveAt(i);//more efficient than Remove(grades[i])
+                }
+            }
+            return numberDropped;
         }
 
         private static void PrintGrades(List<double> grades)
@@ -82,7 +110,7 @@ namespace Day02
                 else if (grade < 69.5) Console.ForegroundColor = ConsoleColor.DarkYellow;
                 else if (grade < 79.5) Console.ForegroundColor = ConsoleColor.Yellow;
                 else if (grade < 89.5) Console.ForegroundColor = ConsoleColor.Blue;
-                else  Console.ForegroundColor = ConsoleColor.Green;
+                else Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"{grade,7:N2}");
                 Console.ResetColor();
             }
@@ -100,6 +128,14 @@ namespace Day02
             {
                 Console.WriteLine(num);
             }
+
+            //ToList
+            List<int> numList = nums.ToList();
+
+            //pass the array to the list constructor
+            List<int> numList2 = new(nums);
+
+            List<int> numList3 = numList2;//does this make a copy??
         }
     }
 }

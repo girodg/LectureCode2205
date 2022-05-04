@@ -65,6 +65,9 @@ namespace Day02
             int numberDropped = DropFailing(grades);
             PrintGrades(grades);
             Console.WriteLine($"{numberDropped} of grades dropped.");
+
+            List<double> curvedGrades = CurveGrade(grades);
+            PrintGrades(curvedGrades);
         }
 
         private static int DropFailing(List<double> grades)
@@ -89,6 +92,18 @@ namespace Day02
                 }
             }
             return numberDropped;
+        }
+
+        static List<double> CurveGrade(List<double> grades)
+        {
+            List<double> curved = new List<double>(grades);
+
+            for (int i = 0; i < curved.Count; i++)
+            {
+                //ternary operator
+                curved[i] = (curved[i] > 95) ? 100 : curved[i] + 5;
+            }
+            return curved;
         }
 
         private static void PrintGrades(List<double> grades)

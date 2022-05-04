@@ -8,6 +8,14 @@ namespace Day02
     {
         static void Main(string[] args)
         {
+
+            string data = "Who is this Aquaman dude? Who cares!";
+            string[] words = data.Split(new char[] { ' ', '?', '!' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var word in words)
+                Console.WriteLine(word);
+
+            Console.ReadKey();
+
             int[] nums = new int[4];
             nums[1] = 5;//indexes are zero-based
             ArrayChallenge();
@@ -96,13 +104,11 @@ namespace Day02
 
         static List<double> CurveGrade(List<double> grades)
         {
-            List<double> curved = new List<double>(grades);
+            List<double> curved = new List<double>(grades);//clone the list
 
             for (int i = 0; i < curved.Count; i++)
-            {
-                //ternary operator
-                curved[i] = (curved[i] > 95) ? 100 : curved[i] + 5;
-            }
+                curved[i] = (curved[i] > 95) ? 100 : curved[i] + 5;//ternary operator
+
             return curved;
         }
 

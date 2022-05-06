@@ -101,6 +101,7 @@ namespace Day03
 
             PrintGrades(pg2);
             DropStudent(pg2);
+            CurveStudent(pg2);
         }
 
         static void PrintGrades(Dictionary<string, double> course)
@@ -141,7 +142,28 @@ namespace Day03
                 else
                     Console.WriteLine($"{name} was not found.");
 
-            } while (true); 
+            } while (true);
+        }
+        static void CurveStudent(Dictionary<string, double> course)
+        {
+            Console.Clear();
+            do
+            {
+                PrintGrades(course);
+                Console.Write("Name of student to curve: ");
+                string name = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(name)) break;
+
+                if(course.TryGetValue(name, out double grade))
+                {
+                    grade = (grade < 95) ? grade + 5 : 100;
+                    course[name] = grade;
+                }
+                else
+                    Console.WriteLine($"{name} is not on the roster.");
+
+
+            } while (true);
         }
 
         static Random rando = new Random();

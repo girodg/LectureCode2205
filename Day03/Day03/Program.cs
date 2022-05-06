@@ -41,10 +41,24 @@ namespace Day03
             string itemToRemove = "Chicken Salad";
             RemoveMenuItem(menu, itemToRemove);
             RemoveMenuItem(menu, "Chicken nuggets");
-            Console.ReadKey();
             PrintMenu(menu);
+            string menuItem = "Double Burger";
+            CheckPrice(menu, menuItem);
+            CheckPrice(menu, "Chicken nuggets");
+            Console.ReadKey();
 
             DictionaryChallenge();
+        }
+
+        private static void CheckPrice(Dictionary<string, float> menu, string menuItem)
+        {
+            if (menu.TryGetValue(menuItem, out float price))
+            {
+                menu[menuItem] = price + price * 0.05F;
+                Console.WriteLine($"{menuItem} was {price,7:C2}. It now costs {menu[menuItem],7:C2}. Thanks Putin.");
+            }
+            else
+                Console.WriteLine($"{menuItem} is not on the menu.");
         }
 
         private static void RemoveMenuItem(Dictionary<string, float> menu, string itemToRemove)
@@ -73,7 +87,7 @@ namespace Day03
                 "Arnn", "Benjamin", "Erik", "Mason", "Nicholas", "Dane", "Joyce", "Hamilton", "Aoife", "Daniel", "Brandon", 
                 "Deion", "Dylan", "Aaronn", "Bob", "Michael", "Nevin"
             };
-            Dictionary<string, double> pg2 = new()
+            Dictionary<string, double> pg2 = new Dictionary<string, double>()
             {
                 { names[0], GetGrade()},
                 { names[1], GetGrade() }
@@ -86,6 +100,7 @@ namespace Day03
             }
 
             PrintGrades(pg2);
+            DropStudent(pg2);
         }
 
         static void PrintGrades(Dictionary<string, double> course)
@@ -108,6 +123,25 @@ namespace Day03
 
                 Console.WriteLine($" {student.Key}");
             }
+        }
+
+        static void DropStudent(Dictionary<string, double> course)
+        {
+            Console.Clear();
+            do
+            {
+                PrintGrades(course);
+                Console.Write("Name of student to drop: ");
+                string name = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(name)) break;
+
+                bool wasRemoved = course.Remove(name);
+                if (wasRemoved)
+                    Console.WriteLine($"{name} was removed from the course.");
+                else
+                    Console.WriteLine($"{name} was not found.");
+
+            } while (true); 
         }
 
         static Random rando = new Random();

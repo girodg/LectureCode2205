@@ -71,6 +71,29 @@ namespace Day03
                 //pg2[names[i]] = GetGrade();
             }
 
+            PrintGrades(pg2);
+        }
+
+        static void PrintGrades(Dictionary<string, double> course)
+        {
+            Console.ReadKey();
+            Console.Clear();
+            Console.WriteLine("-------Grades-------");
+            foreach (var student in course)
+            {
+                double grade = student.Value;
+                if (grade < 59.5) Console.BackgroundColor = ConsoleColor.Red;
+                else if (grade < 69.5) Console.ForegroundColor = ConsoleColor.DarkYellow;
+                else if (grade < 79.5) Console.ForegroundColor = ConsoleColor.Yellow;
+                else if (grade < 89.5) Console.ForegroundColor = ConsoleColor.Blue;
+                else Console.ForegroundColor = ConsoleColor.Green;
+
+                Console.Write($"{grade,7:N2}");
+
+                Console.ResetColor();
+
+                Console.WriteLine($" {student.Key}");
+            }
         }
 
         static Random rando = new Random();

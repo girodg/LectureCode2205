@@ -38,8 +38,22 @@ namespace Day03
             //will NOT throw an exception. will simply overwrite the value
             menu["Chicken Salad"] = 7.99F;
             PrintMenu(menu);
+            string itemToRemove = "Chicken Salad";
+            RemoveMenuItem(menu, itemToRemove);
+            RemoveMenuItem(menu, "Chicken nuggets");
+            Console.ReadKey();
+            PrintMenu(menu);
 
             DictionaryChallenge();
+        }
+
+        private static void RemoveMenuItem(Dictionary<string, float> menu, string itemToRemove)
+        {
+            bool wasRemoved = menu.Remove(itemToRemove);
+            if(wasRemoved)
+                Console.WriteLine($"{itemToRemove} was removed from the menu.");
+            else
+                Console.WriteLine($"{itemToRemove} was not found.");
         }
 
         private static void PrintMenu(Dictionary<string, float> menu)

@@ -157,7 +157,7 @@ namespace Day03
                 if(course.TryGetValue(name, out double grade))
                 {
                     grade = (grade < 95) ? grade + 5 : 100;
-                    course[name] = grade;
+                    course[name] = grade;//put the new value back into the dictionary
                 }
                 else
                     Console.WriteLine($"{name} is not on the roster.");

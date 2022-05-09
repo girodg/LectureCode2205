@@ -37,6 +37,38 @@ namespace Day04
 
             filePath = Path.ChangeExtension(filePath, ".json");
             SaveJson(filePath, JL);
+
+            List<Superhero> jl2 = LoadJson(filePath);
+            if (jl2 != null)
+            {
+                foreach (var hero in jl2)
+                {
+                    Console.WriteLine($"I am {hero.Name} ({hero.Secret}). And I can {hero.Superpowers}!");
+                }
+            }
+        }
+
+        private static List<Superhero> LoadJson(string filePath)
+        {
+            List<Superhero> heroes = null;
+            if (File.Exists(filePath))
+            {
+                //1. read all the json into 1 string variable
+                string jsonText = File.ReadAllText(filePath);
+                //Ctrl+K,S -- surround with
+                try
+                {
+                    heroes = JsonConvert.DeserializeObject<List<Superhero>>(jsonText);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            else
+                Console.WriteLine($"{filePath} does not exists.");
+
+            return heroes;
         }
 
         private static void SaveJson(string filePath, List<Superhero> JL)

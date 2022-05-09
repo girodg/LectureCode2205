@@ -1,9 +1,21 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Day04
 {
+    enum Powers
+    {
+        Swimming, Speed, Flight, Money, Strength, Invisibilty
+    }
+    class Superhero
+    {
+        public string Name { get; set; }
+        public string Secret { get; set; }
+        public Powers Superpowers { get; set; }
+    }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -15,7 +27,28 @@ namespace Day04
             SaveGrades(filePath);
             List<double> grades = LoadGrades(filePath);
             foreach (double grade in grades) Console.WriteLine(grade);
+
+            List<Superhero> JL = new List<Superhero>();
+            JL.Add(new Superhero() { Name = "Batman", Secret = "Bruce", Superpowers = Powers.Money });
+            JL.Add(new Superhero() { Name = "Superman", Secret = "Clark", Superpowers = Powers.Flight });
+            JL.Add(new Superhero() { Name = "Wonder Woman", Secret = "Diana", Superpowers = Powers.Strength });
+            JL.Add(new Superhero() { Name = "Flash", Secret = "Barry", Superpowers = Powers.Speed });
+            JL.Add(new Superhero() { Name = "Aquaman", Secret = "Arthur", Superpowers = Powers.Swimming });
+
+            //Serialize to a JSON file
+            filePath = Path.ChangeExtension(filePath, ".json");
+            using (StreamWriter sw = new StreamWriter(filePath))
+            {
+                using (JsonTextWriter jtw = new JsonTextWriter(sw))
+                {
+                    jtw.Formatting = Formatting.Indented;
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Serialize(jtw, JL);
+                }
+            }
         }
+
+        #region CSV
 
         private static List<double> LoadGrades(string filePath)
         {
@@ -58,5 +91,6 @@ namespace Day04
                 }
             }//3. CLOSE THE FILE!
         }
+        #endregion
     }
 }

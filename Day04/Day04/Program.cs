@@ -35,6 +35,11 @@ namespace Day04
             JL.Add(new Superhero() { Name = "Flash", Secret = "Barry", Superpowers = Powers.Speed });
             JL.Add(new Superhero() { Name = "Aquaman", Secret = "Arthur", Superpowers = Powers.Swimming });
 
+            filePath = SaveJson(filePath, JL);
+        }
+
+        private static string SaveJson(string filePath, List<Superhero> JL)
+        {
             //Serialize to a JSON file
             filePath = Path.ChangeExtension(filePath, ".json");
             using (StreamWriter sw = new StreamWriter(filePath))
@@ -46,6 +51,8 @@ namespace Day04
                     serializer.Serialize(jtw, JL);
                 }
             }
+
+            return filePath;
         }
 
         #region CSV

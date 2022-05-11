@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Day05
 {
@@ -26,6 +28,41 @@ namespace Day05
             Print(nums);
             Swap(nums, 1, 2);
             Print(nums);
+            Split(nums.ToList());
+
+            Console.WriteLine();
+            string s1 = "Batman", s2 = "Aquaman";
+            int compareResult = s1.CompareTo(s2);
+            // -1: less than
+            //  0: equal to
+            //  1: greater than
+            if (compareResult == 0) Console.WriteLine($"{s1} EQUALS {s2}");
+            else if(compareResult == 1) Console.WriteLine($"{s1} GREATER THAN {s2}");
+            else if (compareResult == -1) Console.WriteLine($"{s1} GREATER THAN {s2}");
+        }
+
+        static void Split(List<int> nums)
+        {
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+            int mid = nums.Count / 2;
+            for (int i = 0; i < nums.Count; i++)
+            {
+                if (i < mid)
+                    left.Add(nums[i]);
+                else
+                    right.Add(nums[i]);
+            }
+            Console.WriteLine("LEFT");
+            Print(left);
+            Console.WriteLine("RIGHT");
+            Print(right);
+        }
+        private static void Print(List<int> nums)
+        {
+            foreach (var item in nums)
+                Console.Write($"{item} ");
+            Console.WriteLine();
         }
 
         private static void Swap(int[] nums, int ndx1, int ndx2)

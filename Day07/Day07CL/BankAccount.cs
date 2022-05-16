@@ -42,5 +42,19 @@ namespace Day07CL
 
         //auto-property. the compiler will write the code inside of my get and set AND give me a field
         public string BankName { get; private set; }
+
+        //CONSTRUCTORS
+        //ctor = constructor
+        public BankAccount(string bank, int routing, int acctNum, double balance)//default constructor (no parameters)
+        {
+            //local variables and parameters follow camelCasingNamingConvention
+            //assign the parameters to your properties/fields
+            BankName = bank;
+            RoutingNumber = routing;
+            _accountNumber = acctNum;
+            _balance = balance;
+
+            //balance = _balance;//BACKWARDS and WRONG!
+        }
     }
 }

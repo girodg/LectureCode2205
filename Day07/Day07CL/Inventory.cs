@@ -35,5 +35,23 @@ namespace Day07CL
         }
 
         #endregion
+
+        #region Constructors
+        public Inventory(int capacity, List<string> items)
+        {
+            Capacity = capacity;
+            Items = items.ToList();//clone the list
+        }
+        #endregion
+
+        #region Methods
+        public void AddItem(string itemToAdd)
+        {
+            if (Count == Capacity) //is backpack full?
+                throw new Exception("Backpack is full, fool!");
+
+            _items.Add(itemToAdd);
+        }
+        #endregion
     }
 }

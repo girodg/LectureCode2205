@@ -40,6 +40,8 @@ namespace Day07
             FantasyWeapon sword = Factory.CreateWeapon(WeaponRarity.Common, 1, 20, 10);
             damage = sword.DoDamage();
 
+            BowWeapon bow = new BowWeapon(15, 5, WeaponRarity.Common, 5, 20, 20);
+
             Console.WriteLine($"# of weapons made: {FantasyWeapon.NumberOfWeapons}");
 
             Person alfred = new Person("Alfred Pennyworth", 85);

@@ -41,6 +41,9 @@ namespace Day07
             damage = sword.DoDamage();
 
             Console.WriteLine($"# of weapons made: {FantasyWeapon.NumberOfWeapons}");
+
+            Person alfred = new Person("Alfred Pennyworth", 85);
+            Superhero batman = new Superhero("Bruce Wayne", 35, Superpower.Money, "Batman");
         }
     }
 }

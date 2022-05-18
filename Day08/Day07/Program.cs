@@ -45,6 +45,7 @@ namespace Day07
             backpack.AddItem(sting);
             backpack.AddItem(sword);
             backpack.AddItem(bow);
+            backpack.PrintInventory();
 
             Console.WriteLine($"# of weapons made: {FantasyWeapon.NumberOfWeapons}");
 

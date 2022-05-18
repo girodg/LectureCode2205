@@ -52,6 +52,16 @@ namespace Day07CL
 
             _items.Add(itemToAdd);
         }
+
+        public void PrintInventory()
+        {
+            foreach (var weapon in _items)
+            {
+                Console.WriteLine($"I have a {weapon.Rarity} Level {weapon.Level} weapon that can do {weapon.MaxDamage} of damage. It costs {weapon.Cost} gold!");
+                if(weapon is BowWeapon bow)
+                    Console.WriteLine($"\tIt is a bow! It can hold {bow.ArrowCapacity} arrows. It currently has {bow.ArrowCount} arrows.");
+            }
+        }
         #endregion
     }
 }

@@ -8,6 +8,8 @@ namespace Day07CL
 {
     public class FantasyWeapon
     {
+        public static int NumberOfWeapons { get; private set; } = 0;
+
         public WeaponRarity Rarity { get; set; } = WeaponRarity.Common;
         public int Level { get; set; }
         public int MaxDamage { get; set; }
@@ -19,12 +21,16 @@ namespace Day07CL
             Level = lvl;
             MaxDamage = maxDamage;
             Cost = cost;
+
+            NumberOfWeapons++;
         }
 
-        public int DoDamage()
+        //an instance method (non-static)
+        //instance methods have a hidden parameter called 'this'
+        public int DoDamage()//FantasyWeapon this
         {
             Random randy = new Random();
-            return (int)(MaxDamage * randy.NextDouble());
+            return (int)(this.MaxDamage * randy.NextDouble());
         }
     }
 }

@@ -12,5 +12,10 @@ namespace Day07CL
         {
             return new BankAccount(bank, routing, acctNum, balance);
         }
+
+        public static FantasyWeapon CreateWeapon(WeaponRarity rarity, int lvl, int maxDamage, int cost)
+        {
+            return new FantasyWeapon(rarity, lvl, maxDamage, cost);
+        }
     }
 }

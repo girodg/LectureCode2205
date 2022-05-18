@@ -10,6 +10,7 @@ namespace Day07
         {
             BankAccount acct = new BankAccount("Bank of Garrett", 12345, 67890, 10000);
             //acct is an instance of a BankAccount
+            BankAccount savings = Factory.AccountCreator("BoG", 54321, 09876, 1000);
 
             //set my routing #
             acct.RoutingNumber = 12345;//calls the set automatically for me

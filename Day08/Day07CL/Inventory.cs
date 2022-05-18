@@ -10,7 +10,7 @@ namespace Day07CL
     {
         #region Fields (data)
         private int _capacity;
-        private List<string> _items;
+        private List<FantasyWeapon> _items;
         #endregion
 
         #region Properties
@@ -28,7 +28,7 @@ namespace Day07CL
             get { return _items.Count;}
         }
 
-        public List<string> Items
+        public List<FantasyWeapon> Items
         {
             get { return _items; }
             private set { _items = value; }
@@ -37,7 +37,7 @@ namespace Day07CL
         #endregion
 
         #region Constructors
-        public Inventory(int capacity, List<string> items)
+        public Inventory(int capacity, List<FantasyWeapon> items)
         {
             Capacity = capacity;
             Items = items.ToList();//clone the list
@@ -45,7 +45,7 @@ namespace Day07CL
         #endregion
 
         #region Methods
-        public void AddItem(string itemToAdd)
+        public void AddItem(FantasyWeapon itemToAdd)
         {
             if (Count == Capacity) //is backpack full?
                 throw new Exception("Backpack is full, fool!");

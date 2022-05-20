@@ -1,6 +1,7 @@
 ﻿using Day07CL;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Day07
 {
@@ -46,6 +47,8 @@ namespace Day07
             backpack.AddItem(sword);
             backpack.AddItem(bow);
             backpack.PrintInventory();
+            List<BowWeapon> myBows = backpack.Bows();
+            List<BowWeapon> otherBows = myBows.ToList();
 
             Console.WriteLine($"# of weapons made: {FantasyWeapon.NumberOfWeapons}");
 

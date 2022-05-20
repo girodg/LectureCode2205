@@ -17,15 +17,16 @@ namespace Day07CL
         public int Capacity
         {
             get { return _capacity; }
-            set { 
-                if(value > 0)
-                    _capacity = value; 
+            set
+            {
+                if (value > 0)
+                    _capacity = value;
             }
         }
 
         public int Count
         {
-            get { return _items.Count;}
+            get { return _items.Count; }
         }
 
         public List<FantasyWeapon> Items
@@ -57,9 +58,7 @@ namespace Day07CL
         {
             foreach (var weapon in _items)
             {
-                Console.WriteLine($"I have a {weapon.Rarity} Level {weapon.Level} weapon that can do {weapon.MaxDamage} of damage. It costs {weapon.Cost} gold!");
-                if(weapon is BowWeapon bow)
-                    Console.WriteLine($"\tIt is a bow! It can hold {bow.ArrowCapacity} arrows. It currently has {bow.ArrowCount} arrows.");
+                weapon.Display();
             }
         }
         #endregion

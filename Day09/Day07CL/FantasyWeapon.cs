@@ -32,5 +32,11 @@ namespace Day07CL
             Random randy = new Random();
             return (int)(this.MaxDamage * randy.NextDouble());
         }
+
+        public virtual void Display()
+        {
+            Console.WriteLine($"I have a {Rarity} Level {Level} weapon that can do {MaxDamage} of damage. It costs {Cost} gold!");
+
+        }
     }
 }

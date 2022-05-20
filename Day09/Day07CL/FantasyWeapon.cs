@@ -27,10 +27,15 @@ namespace Day07CL
 
         //an instance method (non-static)
         //instance methods have a hidden parameter called 'this'
-        public int DoDamage()//FantasyWeapon this
+        //public int DoDamage()//FantasyWeapon this
+        //{
+        //    Random randy = new Random();
+        //    return (int)(MaxDamage * randy.NextDouble());
+        //}
+        public int DoDamage(int enchantment = 0)
         {
             Random randy = new Random();
-            return (int)(this.MaxDamage * randy.NextDouble());
+            return (int)((MaxDamage + enchantment) * randy.NextDouble());
         }
 
         public virtual void Display()

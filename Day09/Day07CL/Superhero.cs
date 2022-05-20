@@ -8,7 +8,7 @@ namespace Day07CL
 {
     public enum Superpower
     {
-        Speed, Invisibility, Strength, Money
+        Speed, Invisibility, Strength, Money, Regeneration
     }
     public class Superhero : Person
     {

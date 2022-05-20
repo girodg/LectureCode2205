@@ -98,6 +98,11 @@ namespace Day07
                 person.WhoAmI();
                 //Console.WriteLine(person);
             }
+
+            using (Superhero deadpool = new Superhero("Wade Wilson", 30, Superpower.Regeneration, "Deadpool"))//IDisposable
+            {
+
+            }//deadpool goes out of scope and Dispose is called
         }
     }
 }

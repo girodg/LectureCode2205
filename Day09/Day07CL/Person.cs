@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Day07CL
 {
-    public class Person
+    public class Person : IDisposable
     {
         public string Name { get; set; }
         public int Age { get; set; }
@@ -21,6 +21,11 @@ namespace Day07CL
         public virtual void WhoAmI()
         {
             Console.WriteLine($"Hi. My name is {Name} and I am {Age} years old.");
+        }
+
+        public void Dispose()
+        {
+            Console.WriteLine("Oh no, I died!");
         }
     }
 }
